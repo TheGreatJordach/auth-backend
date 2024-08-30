@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { User } from "../users/entity/user-entity";
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
         synchronize: configService.getOrThrow<boolean>(
           "DATASOURCE_SYNCHRONIZE"
         ),
-        entities: [],
+        entities: [User],
       }),
       inject: [ConfigService],
     }),

@@ -1,12 +1,22 @@
-import { Optional } from "@nestjs/common";
+import {
+  IsEmail,
+  IsOptional,
+  IsPhoneNumber,
+  IsString,
+  Length,
+} from "class-validator";
 
 export class UpdateUserDto {
-  @Optional()
+  @IsOptional()
+  @Length(5, 50)
   name: string;
-  @Optional()
+  @IsOptional()
+  @IsEmail()
   email: string;
-  @Optional()
+  @IsOptional()
+  @IsString()
   password: string;
-  @Optional()
+  @IsOptional()
+  @IsPhoneNumber("MA")
   phone: string;
 }
